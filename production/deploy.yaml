@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hello-react-pro
+  namespace: production
+spec:
+  selector:
+    matchLabels:
+      app: hello-react-pro
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: hello-react-pro
+    spec:
+      containers:
+        - name: angular-pro
+          image: image-registry.openshift-image-registry.svc:5000/development/hello-react:prod
+          ports:
+            - containerPort: 8080
+
